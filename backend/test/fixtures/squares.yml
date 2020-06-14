@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  letter: MyString
+  is_black: false
+  x: 1
+  'y': 1
+  corner_value: 1
+  crossword_id: 1
+
+two:
+  letter: MyString
+  is_black: false
+  x: 1
+  'y': 1
+  corner_value: 1
+  crossword_id: 1
