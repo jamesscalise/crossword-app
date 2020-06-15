@@ -21,7 +21,7 @@ class App extends Component {
     return(
     <div>
       {console.log(this.props)}
-      <CrosswordsContainer crosswords={this.props} />
+      <CrosswordsContainer crossword={this.props.crossword} />
     </div>
     )
   }
@@ -30,6 +30,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     crosswords: state.crosswords,
+    crossword: state.crosswords[0],
     loading: state.loading
   }
 }

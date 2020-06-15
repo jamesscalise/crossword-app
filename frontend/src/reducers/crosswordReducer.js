@@ -7,6 +7,7 @@ const crosswordReducer = (state = { crosswords: [], loading: false }, action) =>
           loading: true
         }
       case 'ADD_CROSSWORDS':
+        console.log(action.crosswords)
         return {
           ...state,
           crosswords: action.crosswords,

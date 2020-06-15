@@ -10,9 +10,10 @@ class CrosswordsContainer extends Component  {
         return (
         <div>
             This loaded
+            {console.log(this.props.crossword)}
             <Square />
-            <SquaresContainer crosswords={this.props.crosswords[0]} />
-            <CluesContainer />
+            <SquaresContainer  />
+            <CluesContainer  />
         </div>
     )}
   
