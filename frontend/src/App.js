@@ -1,26 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import NavBar from './components/NavBar';
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
 import logo from './logo.svg';
+import { fetchCrosswords } from './actions/crosswordActions'
 import './App.css';
+import CrosswordsContainer from './containers/CrosswordsContainer';
+ 
+class App extends Component {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+ componentDidMount() {
+    this.props.fetchCrosswords()
+    
+  }
+
+  render(){
+    return(
+    <div>
+      {console.log(this.props)}
+      <CrosswordsContainer crosswords={this.props} />
     </div>
-  );
+    )
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    crosswords: state.crosswords,
+    loading: state.loading
+  }
+}
+ 
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchCrosswords: () => dispatch(fetchCrosswords()) 
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App)
