@@ -8,6 +8,7 @@ import {
 import logo from './logo.svg';
 import { fetchCrosswords } from './actions/crosswordActions'
 import './App.css';
+import Home from './components/Home'
 import CrosswordsContainer from './containers/CrosswordsContainer';
  
 class App extends Component {
@@ -17,11 +18,27 @@ class App extends Component {
     
   }
 
+  handleLoading = () => {
+    console.log(this.props.loading)
+    if(this.props.loading) {
+      return <div>Loading...</div>
+    } else {
+      return (
+      <div>
+        <Route exact path="/" component={Home} />
+      <Route path="/crossword1" render={routerProps => <CrosswordsContainer {...routerProps} crossword={this.props.crosswords[0]}/>}/>
+      </div>)
+    }
+  }
+
   render(){
     return(
     <div>
-      {console.log(this.props.crosswords)}
-      <CrosswordsContainer crossword={this.props.crosswords[0]} />
+      <Router>
+        <NavBar />
+        <div>{this.handleLoading()}</div>
+      </Router>
+      
     </div>
     )
   }
@@ -34,9 +51,4 @@ const mapStateToProps = state => {
   }
 }
  
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchCrosswords: () => dispatch(fetchCrosswords()) 
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, {fetchCrosswords})(App)

@@ -45,7 +45,7 @@ square17 = Square.create(letter: 'E', is_black: false, y:3, x:1,  corner_value:8
 
 square18 = Square.create(letter: 'L', is_black: false, y:3, x:2,  crossword: crossword)
 
-square19 = Square.create(letter: 'S', is_black: false, y:3, x:3,  corner_value:8, crossword: crossword)
+square19 = Square.create(letter: 'S', is_black: false, y:3, x:3,  crossword: crossword)
 
 square20 = Square.create(letter: 'E', is_black: false, y:3, x:4,  crossword: crossword)
 

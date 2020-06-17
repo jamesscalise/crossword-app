@@ -4,7 +4,6 @@ export const fetchCrosswords = () => {
       fetch('http://localhost:3001/crosswords').then(response => {
         return response.json()
       }).then(responseJSON => {
-        console.log(responseJSON.data)
         dispatch({ type: 'ADD_CROSSWORDS', crosswords: responseJSON.data })
 
       })
