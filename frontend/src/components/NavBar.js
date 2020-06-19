@@ -1,29 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react'
+
 import { NavLink } from 'react-router-dom';
 
-const NavBar = () => {
+class NavBar extends Component {
+
+  renderLinks = () => (
+    this.props.crosswords.map(crossword =>(
+      <NavLink 
+       style={{ marginRight: '10px' }} 
+       to={`/${crossword.title.replace(/\s/g, '')}`}
+        >
+      {crossword.title}
+      </NavLink>
+    ))
+  )
+
+
+
+ render() {
   return (
     <div style={{ borderBottom: '2px solid black', paddingBottom: '10px', marginBottom: '12px' }}>
         <NavLink 
         style={{ marginRight: '10px' }} 
         to="/"
-      >
+      > 
         Home
       </NavLink>
-      <NavLink 
-        style={{ marginRight: '10px' }} 
-        to="/crossword1"
-      >
-        Easy Crossword
-      </NavLink>
-      <NavLink 
-        style={{ marginRight: '10px' }} 
-        to="/crossword2"
-      >
-        Hard Crossword
-      </NavLink>
+      {this.renderLinks()}
     </div>
   );
+  }
 }
 
 export default NavBar;

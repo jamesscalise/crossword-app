@@ -8,8 +8,25 @@ class SquaresContainer extends Component {
     state ={
         rows: [],
         correct: 0,
+        time: 0,
         total: this.props.squares.filter((square) => square.is_black===false).length
     }
+
+    componentDidMount() {
+        this.genMatrix()
+        this.interval = setInterval(this.clockTick, 1000)
+      }
+    
+      componentWillUnmount() {
+        clearInterval(this.interval)
+      }
+
+    clockTick = () => {
+        this.setState(prevState => ({
+          time: prevState.time+1
+        }))
+      }
+    
 
     addCorrect = () => {
         (console.log('add correct has been hit'))
@@ -28,13 +45,13 @@ class SquaresContainer extends Component {
     checkTotal = () =>{
         console.log(this.state.correct)
         if (this.state.correct === this.state.total){
-            alert("You win!")
+            alert(`You win! Your time was: ${this.computeTime()}`)
+            clearInterval(this.interval)
+
         }
     }
 
-    componentDidMount() {
-        this.genMatrix()
-    }
+    
 
     genMatrix = () =>{
         console.log(this.props.length)
@@ -63,17 +80,27 @@ class SquaresContainer extends Component {
     genSquares = (squares) => (
         squares.map((val, idx) =>  {return(
             val.is_black ? 
-            <td key ={idx} style={{backgroundColor: "black", cssFloat: "left", width: "10%", height: "20Px", border: "1px solid black"}}><BlackSquare square ={val} /></td> :
-            <td key ={idx} style={{cssFloat: "left", width: "10%",  height: "20px", border: "1px solid black"}}><div style={{fontSize: "8px", height: "20%"}}>{val.corner_value}</div><Square style={{height: "50%"}}square ={val} addCorrect={this.addCorrect} reduceCorrect={this.reduceCorrect}/></td> 
+            <td key ={idx} style={{backgroundColor: "black", cssFloat: "left", width: "19px", height: "20Px", border: "1px solid black"}}><BlackSquare square ={val} /></td> :
+            <td key ={idx} style={{cssFloat: "left", width: "19px",  height: "20px", border: "1px solid black"}}><div style={{fontSize: "8px", height: "20%"}}>{val.corner_value}</div><Square style={{height: "50%"}}square ={val} addCorrect={this.addCorrect} reduceCorrect={this.reduceCorrect}/></td> 
             )}
      ))
+
+     computeTime = () => {
+         let minutes = Math.floor(this.state.time/60)
+         let seconds = this.state.time - (minutes * 60)
+         return `${minutes}:${seconds}`
+         
+     }
 
     render() {
         return(
             
             <div>
-                <table style={{display: "grid", width: "30%", height: "60%"}}>
+                <h3>Time: { this.computeTime() }</h3>
+                <table style={{display: "grid", width: "70%", height: "60%", borderCollapse: "Collapse"}}>
+                    <tbody>
                 {this.genRows()}
+                </tbody>
                 </table>
             </div>
         )

@@ -27,15 +27,15 @@ updateState = () => {
     if (this.state.isCorrect === false)
     this.setState({
       isCorrect: true
-    })
-    this.props.addCorrect()
+    }, this.props.addCorrect())
+    
   }
     else{
       if (this.state.isCorrect === true){
       this.setState({
         isCorrect: false
-      })
-      this.props.reduceCorrect()
+      }, this.props.reduceCorrect())
+      
     } 
     }
 }
@@ -45,7 +45,7 @@ updateState = () => {
       return (
       
           <input 
-            style={{textAlign: "center", border: "none", outline: "none",  width: "80%", height: "55%"}}
+            style={{textAlign: "center", border: "none", outline: "none",  width: "90%", height: "55%"}}
             name="name"
             type="text"
             value={this.state.text}

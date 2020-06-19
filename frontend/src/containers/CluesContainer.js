@@ -24,16 +24,17 @@ class CluesContainer extends Component {
     render (){
         return(
             <div>
-                <div>
+                
                 <h2>Clues</h2>
+                <div style={{cssFloat: "left", margin: "10px"}}>
                 <h3 >Across:</h3>
-                <ul >
+                <ul style={{listStyleType:"none"}}>
                 {this.renderHorizontals()}
                 </ul>
                 </div>
-                <div>
+                <div style={{cssFloat: "left", margin: "10px"}}>
                 <h3>Verticals</h3>
-                <ul>
+                <ul style={{listStyleType:"none"}}>
                 {this.renderVerticals()}
                 </ul>
                 </div>

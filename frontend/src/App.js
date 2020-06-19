@@ -18,24 +18,36 @@ class App extends Component {
     
   }
 
+  renderCrosswordRoutes = () => (
+    
+    this.props.crosswords.map((crossword) => (
+      <Route path={`/${crossword.title.replace(/\s/g, '')}`} render={routerProps => <CrosswordsContainer {...routerProps} crossword={crossword} />} />
+    ))
+  )
+
+
   handleLoading = () => {
     console.log(this.props.loading)
     if(this.props.loading) {
       return <div>Loading...</div>
     } else {
+      
       return (
       <div>
-        <Route exact path="/" component={Home} />
-      <Route path="/crossword1" render={routerProps => <CrosswordsContainer {...routerProps} crossword={this.props.crosswords[0]}/>}/>
+      <Route exact path="/" component={Home} />
+        {this.renderCrosswordRoutes()}
+  
+
       </div>)
-    }
+    
+  }
   }
 
   render(){
     return(
     <div>
       <Router>
-        <NavBar />
+        <NavBar crosswords = {this.props.crosswords}/>
         <div>{this.handleLoading()}</div>
       </Router>
       
