@@ -93,7 +93,6 @@ clues_list =[
     ['horizontal', 'Mystery-solving Great Dane of cartoons', 17, crossword2],
     ['horizontal', 'Yoga pose', 19, crossword2],
     ['horizontal', 'City where the "Gangnam Style" video was filmed', 20, crossword2],
-    
     ['horizontal', 'Architect Sir Christopher ___', 21, crossword2],
     ['horizontal', 'Cribbage Scoring Piece', 23, crossword2],
     ['horizontal', 'Logo art that changes almost daily', 24, crossword2],
