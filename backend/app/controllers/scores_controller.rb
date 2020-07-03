@@ -5,12 +5,13 @@ class ScoresController < ApplicationController
   def index
     @scores = Score.all 
 
-    render json: @scores
+    render json: @scores.to_json(:include => {:crossword => {:only => :title}})
   end
 
   # GET /scores/1
   def show
-    render json: @score
+    #render json: @score
+    render json: @score.to_json(:include => {:crossword => {:only => :title}})
   end
 
   # POST /scores
@@ -20,6 +21,7 @@ class ScoresController < ApplicationController
 
     if @score.save
       render json: @score, status: :created, location: @score
+      
     else
      render json: @score.errors, status: :unprocessable_entity
     end

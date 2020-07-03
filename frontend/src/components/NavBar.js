@@ -26,6 +26,10 @@ class NavBar extends Component {
       > 
         Home
       </NavLink>
+      <NavLink 
+      style={{ marginRight: '10px' }} 
+      to="/index"
+      >All Scores</NavLink>
       {this.renderLinks()}
     </div>
   );

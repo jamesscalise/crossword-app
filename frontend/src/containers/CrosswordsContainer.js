@@ -28,7 +28,7 @@ class CrosswordsContainer extends Component  {
         console.log("hit")
         this.setState({
             winTime: time
-        })
+        }, this.handlePost)
     }
 
     createCrosswords = () => {
@@ -37,7 +37,7 @@ class CrosswordsContainer extends Component  {
                 <div>
                     <h1>{this.props.crossword.attributes.title}</h1>
                     <h3>Best times:</h3>
-                    {console.log(this.props.crossword.attributes.scores)}
+                   
                     <ol>{this.renderTimes()}</ol>
                     <SquaresContainer computeTime={this.computeTime}squares={this.props.crossword.attributes.squares} handleWin = {this.handleWin} length ={this.props.crossword.attributes.length}/>
                     <CluesContainer clues = {this.props.crossword.attributes.clues}/>
@@ -46,20 +46,21 @@ class CrosswordsContainer extends Component  {
         }
     }
 
-    handleOnClick = () => {
+    handlePost = () => {
         console.log(this.props.crossword)
         this.props.postScore({
-            score: 100,
+            score: this.state.winTime,
             username: this.props.current_user,
             crossword: this.props.crossword.id
         })
+    
     }
 
     render(){   
         return (
         <div>
             {this.createCrosswords()}
-            <button onClick={this.handleOnClick}>Test post score</button>
+            <button onClick={this.handlePost}>Test post score</button>
 
         </div>
     )}

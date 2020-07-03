@@ -1,4 +1,4 @@
-const crosswordReducer = (state = { crosswords: [], loading: false }, action) => {
+const crosswordReducer = (state = { crosswords: [], scores: [], loading: false }, action) => {
     switch(action.type) {
       case 'LOADING_CROSSWORDS':
         return {
@@ -11,6 +11,17 @@ const crosswordReducer = (state = { crosswords: [], loading: false }, action) =>
           crosswords: action.crosswords,
           loading: false
         }
+      case 'LOADING_SCORES':
+        return {
+          ...state,
+          loading: true
+        }
+      case 'ADD_SCORES':
+        return {
+          ...state,
+          scores: action.scores,
+          loading: false
+        }
       case 'ADD_USER':
         return {
           ...state,
@@ -18,10 +29,14 @@ const crosswordReducer = (state = { crosswords: [], loading: false }, action) =>
           loading: false
         }
       case 'ADD_SCORE':
-          console.log('hit reducer')
+          console.log(state.scores)
           return {
             ...state,
-            
+            scores: [
+              ...state.scores,
+              action.score
+            ]
+
           }
       return state
       default:

@@ -6,17 +6,19 @@ import {
   Route
 } from 'react-router-dom';
 import { fetchCrosswords } from './actions/crosswordActions'
-
+import {fetchScores} from './actions/scoresActions'
 import './App.css';
 import Home from './components/Home'
 import Login from './components/Login'
+import Index from './components/Index'
 import CrosswordsContainer from './containers/CrosswordsContainer';
  
 class App extends Component {
 
  componentDidMount() {
-
+    
     this.props.fetchCrosswords()
+    this.props.fetchScores()
 
   }
 
@@ -41,6 +43,7 @@ class App extends Component {
       return (
       <div>
       <Route  exact path="/" render={routerProps => <Home {...routerProps} current_user={this.props.current_user}/>} />
+      <Route path = "/index" render={routerProps => <Index {...routerProps} scores={this.props.scores}/>}  />
         {this.renderCrosswordRoutes()}
       </div>)
     
@@ -84,12 +87,14 @@ const mapStateToProps = state => {
   return {
     crosswords: state.crosswords,
     loading: state.loading,
-    current_user: state.current_user
+    current_user: state.current_user,
+    scores: state.scores
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   fetchCrosswords: () => {dispatch(fetchCrosswords())},
+  fetchScores: () => {dispatch(fetchScores())},
   addUser: (text) => dispatch({type: 'ADD_USER', text})
 })
   

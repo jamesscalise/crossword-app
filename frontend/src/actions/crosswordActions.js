@@ -33,8 +33,9 @@ export const postScore = ({score, username, crossword}) => {
              }).then(res => res.json()).
              then(obj => {
                 console.log(obj)
+                
              })
-    dispatch({type: 'YEAH'})
+   
   }
   
 }

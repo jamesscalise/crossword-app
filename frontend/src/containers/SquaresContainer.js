@@ -44,9 +44,15 @@ class SquaresContainer extends Component {
     checkTotal = () =>{
         console.log(this.state.correct)
         if (this.state.correct === this.state.total){
-            alert(`You win! Your time was: ${this.props.computeTime(this.state.time) }`)
-            clearInterval(this.interval)
-            this.props.handleWin(this.state.time)
+            if (this.state.won === false){
+                alert(`You win! Your time was: ${this.props.computeTime(this.state.time) }`)
+                clearInterval(this.interval)
+                this.props.handleWin(this.state.time)
+                this.setState({
+                    won:true
+                })
+            }
+           
 
         }
     }
