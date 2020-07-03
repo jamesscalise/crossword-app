@@ -8,7 +8,7 @@ const crosswordReducer = (state = { crosswords: [], loading: false }, action) =>
       case 'ADD_CROSSWORDS':
         return {
           ...state,
-          crosswords: action.crosswords.map(crossword => (crossword.attributes)),
+          crosswords: action.crosswords,
           loading: false
         }
       case 'ADD_USER':
@@ -17,8 +17,12 @@ const crosswordReducer = (state = { crosswords: [], loading: false }, action) =>
           current_user: action.text,
           loading: false
         }
-        case 'POST_SCORE':
+      case 'ADD_SCORE':
           console.log('hit reducer')
+          return {
+            ...state,
+            
+          }
       return state
       default:
         return state;

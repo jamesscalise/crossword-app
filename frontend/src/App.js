@@ -15,13 +15,12 @@ import CrosswordsContainer from './containers/CrosswordsContainer';
 class App extends Component {
 
  componentDidMount() {
-   console.log('a')
+
     this.props.fetchCrosswords()
-    console.log('g')
+
   }
 
   handleAddUser = (text) => {
-   // this.props.addUser(text)
     console.log(text)
     this.props.addUser(text)
   }
@@ -29,7 +28,7 @@ class App extends Component {
   renderCrosswordRoutes = () => (
     
     this.props.crosswords.map((crossword) => (
-      <Route path={`/${crossword.title.replace(/\s/g, '')}`} render={routerProps => <CrosswordsContainer {...routerProps} crossword={crossword} />} />
+      <Route path={`/${crossword.attributes.title.replace(/\s/g, '')}`} render={routerProps => <CrosswordsContainer {...routerProps} crossword={crossword} />} />
     ))
   )
 
@@ -53,7 +52,7 @@ class App extends Component {
   loadHome = () => {
     return(
       <div>
-        <Route  path="/" render={routerProps => <Login {...routerProps} users={this.props.users} handleAddUser={this.handleAddUser}/>} />
+        <Route  path="/" render={routerProps => <Login {...routerProps}  handleAddUser={this.handleAddUser}/>} />
       </div>
     )
   }
@@ -85,7 +84,6 @@ const mapStateToProps = state => {
   return {
     crosswords: state.crosswords,
     loading: state.loading,
-    users: state.users,
     current_user: state.current_user
   }
 }

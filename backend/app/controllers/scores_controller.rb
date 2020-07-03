@@ -3,7 +3,7 @@ class ScoresController < ApplicationController
 
   # GET /scores
   def index
-    @scores = Score.all
+    @scores = Score.all 
 
     render json: @scores
   end
@@ -15,12 +15,13 @@ class ScoresController < ApplicationController
 
   # POST /scores
   def create
+   
     @score = Score.new(score_params)
 
     if @score.save
       render json: @score, status: :created, location: @score
     else
-      render json: @score.errors, status: :unprocessable_entity
+     render json: @score.errors, status: :unprocessable_entity
     end
   end
 

@@ -9,6 +9,7 @@ class SquaresContainer extends Component {
         rows: [],
         correct: 0,
         time: 0,
+        won: false,
         total: this.props.squares.filter((square) => square.is_black===false).length
     }
 
@@ -29,14 +30,12 @@ class SquaresContainer extends Component {
     
 
     addCorrect = () => {
-        (console.log('add correct has been hit'))
        this.setState({
             correct: this.state.correct + 1
         }, this.checkTotal)
     }
 
     reduceCorrect = () =>{
-       (console.log('add reduce has been hit'))
         this.setState({
             correct: this.state.correct - 1
         }, this.checkTotal)
@@ -45,8 +44,9 @@ class SquaresContainer extends Component {
     checkTotal = () =>{
         console.log(this.state.correct)
         if (this.state.correct === this.state.total){
-            alert(`You win! Your time was: ${this.computeTime()}`)
+            alert(`You win! Your time was: ${this.props.computeTime(this.state.time) }`)
             clearInterval(this.interval)
+            this.props.handleWin(this.state.time)
 
         }
     }

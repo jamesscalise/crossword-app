@@ -8,9 +8,9 @@ class NavBar extends Component {
     this.props.crosswords.map(crossword =>(
       <NavLink 
        style={{ marginRight: '10px' }} 
-       to={`/${crossword.title.replace(/\s/g, '')}`}
+       to={`/${crossword.attributes.title.replace(/\s/g, '')}`}
         >
-      {crossword.title}
+      {crossword.attributes.title}
       </NavLink>
     ))
   )
