@@ -45,7 +45,7 @@ updateState = () => {
       return (
       
           <input 
-            style={{textAlign: "center", border: "none", outline: "none",  width: "90%", height: "55%"}}
+            style={{textAlign: "center", border: "none", outline: "none",  width: "70%", height: "55%"}}
             name="name"
             type="text"
             value={this.state.text}

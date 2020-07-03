@@ -54,7 +54,6 @@ class SquaresContainer extends Component {
     
 
     genMatrix = () =>{
-        console.log(this.props.length)
         
         var i
         
@@ -85,18 +84,11 @@ class SquaresContainer extends Component {
             )}
      ))
 
-     computeTime = () => {
-         let minutes = Math.floor(this.state.time/60)
-         let seconds = this.state.time - (minutes * 60)
-         return `${minutes}:${seconds}`
-         
-     }
-
     render() {
         return(
             
             <div>
-                <h3>Time: { this.computeTime() }</h3>
+                <h3>Time: { this.props.computeTime(this.state.time) }</h3>
                 <table style={{display: "grid", width: "70%", height: "60%", borderCollapse: "Collapse"}}>
                     <tbody>
                 {this.genRows()}

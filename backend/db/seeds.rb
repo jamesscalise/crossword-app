@@ -426,3 +426,5 @@ end
 vertical_clue_list.each do |content, number| 
     Clue.create(orientation: "vertical", content: content, number: number, crossword: crossword2)
 end
+
+john = User.create(username: "John")

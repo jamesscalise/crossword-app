@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :scores
+  resources :time_records
+  resources :users
   resources :squares
   resources :clues
   resources :crosswords

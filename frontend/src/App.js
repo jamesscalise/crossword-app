@@ -5,17 +5,25 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
-import logo from './logo.svg';
 import { fetchCrosswords } from './actions/crosswordActions'
+
 import './App.css';
 import Home from './components/Home'
+import Login from './components/Login'
 import CrosswordsContainer from './containers/CrosswordsContainer';
  
 class App extends Component {
 
  componentDidMount() {
+   console.log('a')
     this.props.fetchCrosswords()
-    
+    console.log('g')
+  }
+
+  handleAddUser = (text) => {
+   // this.props.addUser(text)
+    console.log(text)
+    this.props.addUser(text)
   }
 
   renderCrosswordRoutes = () => (
@@ -27,28 +35,45 @@ class App extends Component {
 
 
   handleLoading = () => {
-    console.log(this.props.loading)
+    
     if(this.props.loading) {
       return <div>Loading...</div>
     } else {
-      
       return (
       <div>
-      <Route exact path="/" component={Home} />
+      <Route  exact path="/" render={routerProps => <Home {...routerProps} current_user={this.props.current_user}/>} />
         {this.renderCrosswordRoutes()}
-  
-
       </div>)
     
   }
+  }
+
+  
+
+  loadHome = () => {
+    return(
+      <div>
+        <Route  path="/" render={routerProps => <Login {...routerProps} users={this.props.users} handleAddUser={this.handleAddUser}/>} />
+      </div>
+    )
+  }
+
+  loadCrosswords = () => {
+    return(
+      <div>
+        <NavBar crosswords = {this.props.crosswords}/>
+        {this.handleLoading()}
+      </div>
+    )
   }
 
   render(){
     return(
     <div>
       <Router>
-        <NavBar crosswords = {this.props.crosswords}/>
-        <div>{this.handleLoading()}</div>
+        {this.props.current_user ? this.loadCrosswords() : this.loadHome()}
+        
+      
       </Router>
       
     </div>
@@ -59,8 +84,15 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     crosswords: state.crosswords,
-    loading: state.loading
+    loading: state.loading,
+    users: state.users,
+    current_user: state.current_user
   }
 }
- 
-export default connect(mapStateToProps, {fetchCrosswords})(App)
+
+const mapDispatchToProps = dispatch => ({
+  fetchCrosswords: () => {dispatch(fetchCrosswords())},
+  addUser: (text) => dispatch({type: 'ADD_USER', text})
+})
+  
+export default connect(mapStateToProps, mapDispatchToProps)(App)

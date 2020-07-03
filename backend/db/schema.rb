@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_13_185548) do
+ActiveRecord::Schema.define(version: 2020_07_02_041143) do
 
   create_table "clues", force: :cascade do |t|
     t.string "orientation"
@@ -27,7 +27,15 @@ ActiveRecord::Schema.define(version: 2020_06_13_185548) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
- 
+
+  create_table "scores", force: :cascade do |t|
+    t.string "username"
+    t.integer "time"
+    t.integer "crossword_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "squares", force: :cascade do |t|
     t.string "letter"
     t.boolean "is_black"
@@ -35,6 +43,20 @@ ActiveRecord::Schema.define(version: 2020_06_13_185548) do
     t.integer "y"
     t.integer "corner_value"
     t.integer "crossword_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "time_records", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "crossword_id"
+    t.integer "record"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
