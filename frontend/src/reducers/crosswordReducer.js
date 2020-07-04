@@ -1,5 +1,7 @@
 const crosswordReducer = (state = { crosswords: [], scores: [], loading: false }, action) => {
+  console.dir(state)
     switch(action.type) {
+      
       case 'LOADING_CROSSWORDS':
         return {
           ...state,

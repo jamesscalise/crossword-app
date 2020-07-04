@@ -20,7 +20,7 @@ class ScoresController < ApplicationController
     @score = Score.new(score_params)
 
     if @score.save
-      render json: @score, status: :created, location: @score
+      render json: @score.to_json(:include => {:crossword => {:only => :title}})
       
     else
      render json: @score.errors, status: :unprocessable_entity

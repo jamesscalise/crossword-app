@@ -16,7 +16,7 @@ class CrosswordsContainer extends Component  {
     }
     
     renderTimes = () => (
-      this.props.crossword.attributes.scores.sort(function(a, b){
+      this.props.test_scores.sort(function(a, b){
             return a.time-b.time
         }).slice(0, 5).map(score => (
         <li>{score.username}: {this.computeTime(score.time)}</li>
@@ -60,6 +60,7 @@ class CrosswordsContainer extends Component  {
         return (
         <div>
             {this.createCrosswords()}
+            {console.log(this.props.test_scores)}
             <button onClick={this.handlePost}>Test post score</button>
 
         </div>
@@ -67,9 +68,10 @@ class CrosswordsContainer extends Component  {
   
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, {crossword}) => {
     return {
-        current_user: state.current_user
+        current_user: state.current_user,
+        test_scores: state.scores.filter(score => score.crossword_id == crossword.id)
     }
 }
 
