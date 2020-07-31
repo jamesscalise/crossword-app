@@ -7,18 +7,20 @@ import {
 } from 'react-router-dom';
 import { fetchCrosswords } from './actions/crosswordActions'
 import {fetchScores} from './actions/scoresActions'
+import {fetchComments} from './actions/commentActions'
 import './App.css';
 import Home from './components/Home'
 import Login from './components/Login'
 import Index from './components/Index'
 import CrosswordsContainer from './containers/CrosswordsContainer';
- 
+  
 class App extends Component {
 
  componentDidMount() {
     
     this.props.fetchCrosswords()
     this.props.fetchScores()
+    this.props.fetchComments()
 
   }
 
@@ -95,6 +97,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   fetchCrosswords: () => {dispatch(fetchCrosswords())},
   fetchScores: () => {dispatch(fetchScores())},
+  fetchComments: () => {dispatch(fetchComments())},
   addUser: (text) => dispatch({type: 'ADD_USER', text})
 })
   
