@@ -1,4 +1,4 @@
-const crosswordReducer = (state = { crosswords: [], scores: [], loading: false }, action) => {
+const crosswordReducer = (state = { crosswords: [], scores: [], comments: [], loading: false }, action) => {
   console.dir(state)
     switch(action.type) {
       
@@ -22,6 +22,17 @@ const crosswordReducer = (state = { crosswords: [], scores: [], loading: false }
         return {
           ...state,
           scores: action.scores,
+          loading: false
+        }
+      case 'LOADING_COMMENTS':
+        return {
+          ...state,
+          loading: true
+        }
+      case 'ADD_COMMENTS':
+        return {
+          ...state,
+          comments: action.comments,
           loading: false
         }
       case 'ADD_USER':
