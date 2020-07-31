@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_041143) do
+ActiveRecord::Schema.define(version: 2020_07_31_215244) do
 
   create_table "clues", force: :cascade do |t|
     t.string "orientation"
     t.string "content"
     t.integer "number"
+    t.integer "crossword_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "username"
+    t.string "content"
     t.integer "crossword_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

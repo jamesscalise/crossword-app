@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :scores
   resources :time_records
   resources :users
