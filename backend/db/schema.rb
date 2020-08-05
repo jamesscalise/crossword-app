@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_07_31_215244) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "clues", force: :cascade do |t|
     t.string "orientation"
     t.string "content"
