@@ -3,7 +3,7 @@ export const fetchComments = () => {
     return (dispatch) => {
       
       dispatch({ type: 'LOADING_COMMENTS'})
-      fetch('http://localhost:3001/comments').then(response => {
+      fetch('https://mighty-bastion-16545.herokuapp.com/comments').then(response => {
         return response.json()
       }).then(responseJSON => {
         

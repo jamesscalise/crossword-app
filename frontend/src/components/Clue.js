@@ -7,6 +7,7 @@ class Clue extends Component {
             <div></div>
         )
     }
-}
+}  
 
 export default Clue
+

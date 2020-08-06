@@ -3,7 +3,7 @@ export const fetchCrosswords = () => {
     return (dispatch) => {
      
       dispatch({ type: 'LOADING_CROSSWORDS'})
-      fetch('http://localhost:3001/crosswords').then(response => {
+      fetch('https://mighty-bastion-16545.herokuapp.com/crosswords').then(response => {
         return response.json()
       }).then(responseJSON => {
         console.log(responseJSON.data)
@@ -19,7 +19,7 @@ export const postScore = ({score, username, crossword}) => {
   console.log(username)
   console.log(crossword)
   return (dispatch) => {
-    fetch('http://localhost:3001/scores', {
+    fetch('https://mighty-bastion-16545.herokuapp.com/scores', {
             method: 'POST',
             headers:{
             'Content-Type': 'application/json',

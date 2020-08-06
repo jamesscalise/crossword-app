@@ -30,7 +30,6 @@ const crosswordReducer = (state = { crosswords: [], scores: [], comments: [], lo
           loading: true
         }
       case 'ADD_COMMENTS':
-        console.log("this has been hit")
         return {
           ...state,
           comments: action.comments,

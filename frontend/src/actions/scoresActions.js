@@ -3,7 +3,7 @@ export const fetchScores = () => {
       return (dispatch) => {
         
         dispatch({ type: 'LOADING_SCORES'})
-        fetch('http://localhost:3001/scores').then(response => {
+        fetch('https://mighty-bastion-16545.herokuapp.com/scores').then(response => {
           return response.json()
         }).then(responseJSON => {
           
