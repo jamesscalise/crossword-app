@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class commentForm extends Component {
+class CommentForm extends Component {
 
     state = {
         text: ''
@@ -22,6 +22,8 @@ class commentForm extends Component {
 
     render (){
         return(
+            <div>
+                <h3>Leave a comment: </h3>
             <input 
             name="name"
             type="text"
@@ -29,8 +31,9 @@ class commentForm extends Component {
            
             onChange = {this.handleOnChange}
           />
+          </div>
         )
     }
 }  
 
-export default commentFrom
+export default CommentForm
