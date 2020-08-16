@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import SquaresContainer from './SquaresContainer.js'
 import CluesContainer from './CluesContainer'
 import {postScore} from '../actions/crosswordActions'
-import CommentForm from '../components/CommentForm'
+import Comments from '../components/CommentForm'
+
 class CrosswordsContainer extends Component  {
 
     state = {
@@ -42,7 +43,8 @@ class CrosswordsContainer extends Component  {
                     <ol>{this.renderTimes()}</ol>
                     <SquaresContainer computeTime={this.computeTime}squares={this.props.crossword.attributes.squares} handleWin = {this.handleWin} length ={this.props.crossword.attributes.length}/>
                     <CluesContainer clues = {this.props.crossword.attributes.clues}/>
-                    <CommentForm />
+                    <Comments />
+                    
                 </div>
             )
         }
