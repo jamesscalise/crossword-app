@@ -4,11 +4,12 @@ import CommentForm from './CommentForm';
 
 class Comments extends Component {
 
-    handleAddComment = (text) => {
+    handleAddComment = (content) => {
         
         let data ={
-            text: text,
-            username: this.props.current_user
+            content: content,
+            username: this.props.current_user,
+            crossword_id: this.props.crossword_id
         }
         this.props.addComment(data)
      

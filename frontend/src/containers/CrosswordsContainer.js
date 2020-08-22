@@ -43,7 +43,7 @@ class CrosswordsContainer extends Component  {
                     <ol>{this.renderTimes()}</ol>
                     <SquaresContainer computeTime={this.computeTime}squares={this.props.crossword.attributes.squares} handleWin = {this.handleWin} length ={this.props.crossword.attributes.length}/>
                     <CluesContainer clues = {this.props.crossword.attributes.clues}/>
-                    <Comments />
+                    <Comments crossword_id={this.props.crossword.id}/>
                     
                 </div>
             )
