@@ -25,13 +25,16 @@ class CommentForm extends Component {
         return(
             <div>
                 <h3>Leave a comment: </h3>
-            <input 
-            name="name"
-            type="text"
-            value={this.state.text}
-           
-            onChange = {this.handleOnChange}
-          />
+            <form>
+                <input 
+                name="name"
+                type="text"
+                value={this.state.text}
+            
+                onChange = {this.handleOnChange}
+                />
+                <input type="submit"/>
+            </form>
           </div>
         )
     }
