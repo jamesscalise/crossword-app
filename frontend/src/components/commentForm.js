@@ -14,9 +14,9 @@ class CommentForm extends Component {
     }
 
     handleOnSubmit = (event) => {
-        event.preventDefault();
-        console.log(this.state.text)
-       // this.props.handleAddUser(this.state.text)
+        event.preventDefault()
+        console.log('hit handleonsubmit')
+        this.props.handleAddComment(this.state.text)
         this.setState({
           text: ''
         })
@@ -26,7 +26,7 @@ class CommentForm extends Component {
         return(
             <div>
                 <h3>Leave a comment: </h3>
-            <form onSubmit ={this.handleOnSubmit}>
+            <form onSubmit ={(event) => this.handleOnSubmit(event)}>
                 <input 
                 name="name"
                 type="text"

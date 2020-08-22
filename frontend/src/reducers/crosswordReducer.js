@@ -51,7 +51,9 @@ const crosswordReducer = (state = { crosswords: [], scores: [], comments: [], lo
             ]
 
           }
-      return state
+      case 'ADD_COMMENT':
+        console.log(action)
+        return state
       default:
         return state;
     }

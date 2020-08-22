@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import SquaresContainer from './SquaresContainer.js'
 import CluesContainer from './CluesContainer'
 import {postScore} from '../actions/crosswordActions'
-import Comments from '../components/CommentForm'
+import Comments from '../components/Comments'
 
 class CrosswordsContainer extends Component  {
 

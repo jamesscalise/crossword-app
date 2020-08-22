@@ -5,17 +5,25 @@ import CommentForm from './CommentForm';
 class Comments extends Component {
 
     handleAddComment = (text) => {
-        data ={
+        
+        let data ={
             text: text,
-            username: this.props.urrent_user
+            username: this.props.current_user
         }
-        this.props.addUser(data)
+        this.props.addComment(data)
+     
+    }
+
+    renderComments = () => {
+        console.log('this worked')
     }
 
    render(){
     return(
     <div>
-      <CommentForm />
+       
+      <CommentForm handleAddComment={this.handleAddComment}/>
+        
     </div>
     )
   }
@@ -30,7 +38,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    addUser: (data) => dispatch({type: 'ADD_USER', data})
+    addComment: (data) => dispatch({type: 'ADD_COMMENT', data})
 })
   
-export default connect(mapStateToProps, mapDispatchToProps)(xxx)
+export default connect(mapStateToProps, mapDispatchToProps)(Comments)
