@@ -19,4 +19,4 @@ My backend is currently hosted in Heroku, and soon will be hosting the frontend 
 Begin by creating a username, then access one of the links to the crosswords to begin playing!
 
 
-##License# 
+##License
